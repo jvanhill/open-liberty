@@ -1689,7 +1689,7 @@ public class LdapConnection {
                     NamingEnumeration<SearchResult> neu = null;
                     try {
                         if (tc.isDebugEnabled()) {
-                            Tr.debug(tc, METHODNAME + " Search page " + +pageCount);
+                            Tr.debug(tc, METHODNAME + " Search page " + pageCount);
                         }
                         if (filterArgs == null) {
                             neu = ctx.search(new LdapName(name), filterExpr, cons);
@@ -1700,13 +1700,25 @@ public class LdapConnection {
                         if ((e instanceof CommunicationException) || (e instanceof ServiceUnavailableException)) {
                             ctx = reCreateDirContext(ctx, e.toString());
 
-                            if (requestControls != null) {
-                                ctx.setRequestControls(new Control[] { requestControls[0], new PagedResultsControl(iPageSize, false) });
+                            /*
+                             * Ensure that we replay the cookie if it is not null, which indicates we have made
+                             * previous successful search calls.
+                             */
+                            PagedResultsControl pagedResultsControl = null;
+                            if (cookie == null) {
+                                pagedResultsControl = new PagedResultsControl(iPageSize, false);
                             } else {
-                                ctx.setRequestControls(new Control[] { new PagedResultsControl(iPageSize, false) });
+                                pagedResultsControl = new PagedResultsControl(iPageSize, cookie, false);
                             }
+
+                            if (requestControls != null) {
+                                ctx.setRequestControls(new Control[] { requestControls[0], pagedResultsControl });
+                            } else {
+                                ctx.setRequestControls(new Control[] { pagedResultsControl });
+                            }
+
                             if (tc.isDebugEnabled()) {
-                                Tr.debug(tc, METHODNAME + " Search page " + +pageCount);
+                                Tr.debug(tc, METHODNAME + " Search page (retry) " + pageCount);
                             }
                             if (filterArgs == null) {
                                 neu = ctx.search(new LdapName(name), filterExpr, cons);
