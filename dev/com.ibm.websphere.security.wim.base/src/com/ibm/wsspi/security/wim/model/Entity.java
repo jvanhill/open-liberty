@@ -655,18 +655,19 @@ public class Entity {
         mandatoryProperties.add(PROP_CREATE_TIMESTAMP);
     }
 
+    // TODO THESE WERE LDAP SPECIFIC IN TWAS...
     private static synchronized void setTransientPropertyNames() {
         if (transientProperties != null) {
             return;
         }
         transientProperties = new ArrayList();
         transientProperties.add(PROP_IDENTIFIER);
-        transientProperties.add(PROP_VIEW_IDENTIFIERS);
+        transientProperties.add(PROP_VIEW_IDENTIFIERS); // TODO NOT IN TWAS
         transientProperties.add(PROP_PARENT);
         transientProperties.add(PROP_CHILDREN);
         transientProperties.add(PROP_GROUPS);
         transientProperties.add(PROP_ENTITLEMENT_INFO);
-        transientProperties.add(PROP_CHANGE_TYPE);
+        transientProperties.add(PROP_CHANGE_TYPE); // TODO NOT IN TWAS
     }
 
     /**

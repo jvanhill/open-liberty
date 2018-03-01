@@ -381,7 +381,7 @@ public class LoginAccount extends Party {
             return;
         }
         transientProperties = new ArrayList();
-        transientProperties.add(PROP_CERTIFICATE);
+//        transientProperties.add(PROP_CERTIFICATE); // TODO WAS NOT IN TWAS
         transientProperties.addAll(Party.getTransientProperties());
     }
 

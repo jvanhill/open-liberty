@@ -2911,6 +2911,7 @@ public class PersonAccount extends LoginAccount {
         }
     }
 
+    // TODO SEEMS LIKE WE COULD REMOVE THIS SINCE WE ONLY SET LOGINACCOUNT'S TRANSITIVE PROPERTIES
     @Override
     public boolean isPersistentProperty(String propName) {
         if (transientProperties == null) {

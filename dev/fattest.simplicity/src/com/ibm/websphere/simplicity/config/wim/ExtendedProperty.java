@@ -1,14 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2017 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
-
+/*
+* IBM Confidential
+*
+* OCO Source Materials
+*
+* WLP Copyright IBM Corp. 2017
+*
+* The source code for this program is not published or otherwise divested
+* of its trade secrets, irrespective of what has been deposited with the
+* U.S. Copyright Office.
+*/
 package com.ibm.websphere.simplicity.config.wim;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -29,6 +29,16 @@ public class ExtendedProperty extends ConfigElement {
     private String entityType;
     private Boolean multiValued;
     private String name;
+
+    public ExtendedProperty() {}
+
+    public ExtendedProperty(String name, String dataType, Boolean multiValued, String defaultValue, String entityType) {
+        this.name = name;
+        this.dataType = dataType;
+        this.multiValued = multiValued;
+        this.defaultValue = defaultValue;
+        this.entityType = entityType;
+    }
 
     /**
      * @return the dataType

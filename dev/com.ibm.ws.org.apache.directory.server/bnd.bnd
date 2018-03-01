@@ -12,7 +12,7 @@
 bVersion=1.0
 
 test.project: true
-
+generate.replacement: true
 
 #
 # If the version of ApacheDS should change, the build.gradle file will

@@ -27,9 +27,9 @@ import com.ibm.websphere.security.wim.ras.WIMTraceHelper;
 
 /**
  * <p>Java class for Party complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Party">
  * &lt;complexContent>
@@ -38,22 +38,20 @@ import com.ibm.websphere.security.wim.ras.WIMTraceHelper;
  * &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
+ *
  * <p> The Party object extends the RolePlayer object, and represents a Party which is extended by Person,
  * Group, OrgContainer and LoginAccount.
- * 
+ *
  **/
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Party")
 @XmlSeeAlso({
-             Group.class,
-             OrgContainer.class,
-             Person.class,
-             LoginAccount.class
+              Group.class,
+              OrgContainer.class,
+              Person.class,
+              LoginAccount.class
 })
-public class Party
-                extends RolePlayer
-{
+public class Party extends RolePlayer {
 
     private static List mandatoryProperties = null;
     private static List transientProperties = null;
@@ -123,6 +121,7 @@ public class Party
         }
     }
 
+    // TODO SEEMS LIKE WE COULD REMOVE THIS SINCE WE ONLY SET ENTITY'S TRANSITIVE PROPERTIES (VIA ROLEPLAYER)
     @Override
     public boolean isPersistentProperty(String propName) {
         if (transientProperties == null) {
