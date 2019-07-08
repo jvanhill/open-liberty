@@ -12,9 +12,9 @@
 /**
  * Provides the main OSGi container for the REST Handler framework.
  * 
- * @version 1.4
+ * @version 1.5
  */
-@org.osgi.annotation.versioning.Version("1.4")
+@org.osgi.annotation.versioning.Version("1.5")
 @TraceOptions(traceGroup = TraceConstants.TRACE_GROUP, messageBundle = TraceConstants.TRACE_BUNDLE_CORE)
 package com.ibm.wsspi.rest.handler.helper;
 

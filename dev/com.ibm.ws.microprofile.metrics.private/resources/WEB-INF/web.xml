@@ -41,10 +41,11 @@
 
   <security-constraint id="SecurityConstraint_2">
     <display-name>MicroProfile Metrics Security Constraint - Reader Role</display-name>
-    <web-resource-collection id="WebResourceCollection_3">
+    <web-resource-collection id="WebResourceCollection_2">
         <web-resource-name>MicroProfile Metrics URL</web-resource-name>
         <url-pattern>/*</url-pattern>
         <http-method>GET</http-method>
+        <http-method>OPTIONS</http-method>
     </web-resource-collection>
     <auth-constraint>
       <role-name>Reader</role-name>

@@ -22,6 +22,22 @@ import com.ibm.wsspi.rest.handler.RESTResponse;
 /**
  * This helper service performs the default authorization on the given user.
  *
+ * <p/>
+ * The following table shows the allowed operations for each administrative role.
+ *
+ * <table>
+ * <thead>
+ * <tr><th>Operation</th><th>Administrator Role</th><th>Reader Role</th></tr>
+ * </thead>
+ * <tbody>
+ * <tr><td>GET</td><td align="center">X</td><td align="center">X</td></tr>
+ * <tr><td>PUT</td><td align="center">X</td><td align="center"></td></tr>
+ * <tr><td>POST</td><td align="center">X</td><td align="center"></td></tr>
+ * <tr><td>DELETE</td><td align="center">X</td><td align="center"></td></tr>
+ * <tr><td>OPTIONS</td><td align="center">X</td><td align="center"></td></tr>
+ * </tbody>
+ * </table>
+ *
  * @ibm-spi
  */
 @Component(service = { DefaultAuthorizationHelper.class },
@@ -42,7 +58,6 @@ public class DefaultAuthorizationHelper {
 
         if (!isAuthorized) {
             // Not in admin role, so built error msg
-            // TODO: Translate msg
             response.sendError(403, "Forbidden");
         }
 
